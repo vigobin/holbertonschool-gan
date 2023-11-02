@@ -1,0 +1,246 @@
+wandb_version: 1
+
+_wandb:
+  desc: null
+  value:
+    python_version: 3.10.12
+    cli_version: 0.15.12
+    framework: keras
+    is_jupyter_run: true
+    is_kaggle_kernel: false
+    start_time: 1698898626.392738
+    t:
+      1:
+      - 2
+      - 3
+      - 12
+      - 55
+      2:
+      - 2
+      - 3
+      - 12
+      - 55
+      3:
+      - 2
+      - 13
+      - 19
+      - 23
+      4: 3.10.12
+      5: 0.15.12
+      8:
+      - 1
+      - 5
+      - 12
+      13: linux-x86_64
+BUFFER_SIZE:
+  desc: null
+  value: 60000
+BATCH_SIZE:
+  desc: null
+  value: 128
+EPOCHS:
+  desc: null
+  value: 20
+noise_dim:
+  desc: null
+  value: 100
+num_to_generate:
+  desc: null
+  value: 16
+precision:
+  desc: null
+  value: float16
+_items:
+  desc: null
+  value:
+    _wandb: {}
+    BUFFER_SIZE: 60000
+    BATCH_SIZE: 128
+    EPOCHS: 20
+    noise_dim: 100
+    num_to_generate: 16
+    precision: float16
+_locked:
+  desc: null
+  value: {}
+_users:
+  desc: null
+  value: {}
+_users_inv:
+  desc: null
+  value: {}
+_users_cnt:
+  desc: null
+  value: 0
+_callback:
+  desc: null
+  value: wandb.sdk.wandb_run.Run._config_callback
+_settings:
+  desc: null
+  value:
+    _args: null
+    _aws_lambda: false
+    _async_upload_concurrency_limit: null
+    _cli_only_mode: null
+    _colab: true
+    _cuda: null
+    _disable_meta: false
+    _disable_service: false
+    _disable_setproctitle: false
+    _disable_stats: false
+    _disable_viewer: null
+    _disable_machine_info: false
+    _except_exit: null
+    _executable: /usr/bin/python3
+    _extra_http_headers: null
+    _file_stream_retry_max: 125
+    _file_stream_retry_wait_min_seconds: 2
+    _file_stream_retry_wait_max_seconds: 60
+    _file_stream_timeout_seconds: 180
+    _file_uploader_retry_max: 10
+    _file_uploader_retry_wait_min_seconds: 2
+    _file_uploader_retry_wait_max_seconds: 60
+    _file_uploader_timeout_seconds: 0
+    _flow_control_custom: false
+    _flow_control_disabled: false
+    _graphql_retry_max: 10
+    _graphql_retry_wait_min_seconds: 2
+    _graphql_retry_wait_max_seconds: 60
+    _graphql_timeout_seconds: 30
+    _internal_check_process: 8.0
+    _internal_queue_timeout: 2.0
+    _ipython: false
+    _jupyter: true
+    _jupyter_name: Baseline.ipynb
+    _jupyter_path: fileId=1gt7YbwWw1wJTpm0RQ20ZwOkMhCUOnaKP
+    _jupyter_root: /content
+    _kaggle: false
+    _live_policy_rate_limit: null
+    _live_policy_wait_time: null
+    _log_level: 10
+    _network_buffer: null
+    _noop: false
+    _notebook: true
+    _offline: false
+    _sync: false
+    _os: Linux-5.15.120+-x86_64-with-glibc2.35
+    _platform: linux
+    _proxies: null
+    _python: 3.10.12
+    _runqueue_item_id: null
+    _require_nexus: false
+    _save_requirements: true
+    _service_transport: null
+    _service_wait: 30.0
+    _start_datetime: '20231102_041706'
+    _start_time: 1698898626.37787
+    _stats_pid: 1615
+    _stats_sample_rate_seconds: 2.0
+    _stats_samples_to_average: 15
+    _stats_join_assets: true
+    _stats_neuron_monitor_config_path: null
+    _stats_open_metrics_endpoints: null
+    _stats_open_metrics_filters:
+    - .*
+    _stats_disk_paths:
+    - /
+    _stats_buffer_size: 0
+    _tmp_code_dir: /content/wandb/run-20231102_041706-xkeny1tk/tmp/code
+    _tracelog: null
+    _unsaved_keys: null
+    _windows: false
+    allow_val_change: null
+    anonymous: null
+    api_key: d25aeb5e34bd6393994239f5af5c078242b899f6
+    azure_account_url_to_access_key: null
+    base_url: https://api.wandb.ai
+    code_dir: null
+    colab_url: https://colab.research.google.com/notebook#fileId=1gt7YbwWw1wJTpm0RQ20ZwOkMhCUOnaKP
+    config_paths: null
+    console: wrap
+    deployment: cloud
+    disable_code: false
+    disable_git: false
+    disable_hints: null
+    disable_job_creation: false
+    disabled: false
+    docker: null
+    email: 5547@holbertonstudents.com
+    entity: vgobin
+    files_dir: /content/wandb/run-20231102_041706-xkeny1tk/files
+    force: null
+    git_commit: null
+    git_remote: origin
+    git_remote_url: null
+    git_root: null
+    heartbeat_seconds: 30
+    host: ca77437cca33
+    ignore_globs: []
+    init_timeout: 90.0
+    is_local: false
+    job_name: null
+    job_source: null
+    label_disable: null
+    launch: null
+    launch_config_path: null
+    log_dir: /content/wandb/run-20231102_041706-xkeny1tk/logs
+    log_internal: /content/wandb/run-20231102_041706-xkeny1tk/logs/debug-internal.log
+    log_symlink_internal: /content/wandb/debug-internal.log
+    log_symlink_user: /content/wandb/debug.log
+    log_user: /content/wandb/run-20231102_041706-xkeny1tk/logs/debug.log
+    login_timeout: null
+    mode: online
+    notebook_name: null
+    problem: fatal
+    program: Baseline.ipynb
+    program_abspath: null
+    program_relpath: null
+    project: DCGAN
+    project_url: https://wandb.ai/vgobin/DCGAN
+    quiet: null
+    reinit: null
+    relogin: null
+    resume: null
+    resume_fname: /content/wandb/wandb-resume.json
+    resumed: false
+    root_dir: /content
+    run_group: null
+    run_id: xkeny1tk
+    run_job_type: null
+    run_mode: run
+    run_name: Experiment3
+    run_notes: null
+    run_tags: null
+    run_url: https://wandb.ai/vgobin/DCGAN/runs/xkeny1tk
+    sagemaker_disable: null
+    save_code: null
+    settings_system: /root/.config/wandb/settings
+    settings_workspace: /content/wandb/settings
+    show_colors: null
+    show_emoji: null
+    show_errors: true
+    show_info: true
+    show_warnings: true
+    silent: false
+    start_method: null
+    strict: null
+    summary_errors: null
+    summary_timeout: 60
+    summary_warnings: 5
+    sweep_id: null
+    sweep_param_path: null
+    sweep_url: ''
+    symlink: true
+    sync_dir: /content/wandb/run-20231102_041706-xkeny1tk
+    sync_file: /content/wandb/run-20231102_041706-xkeny1tk/run-xkeny1tk.wandb
+    sync_symlink_latest: /content/wandb/latest-run
+    system_sample: 15
+    system_sample_seconds: 2
+    table_raise_on_max_row_limit_exceeded: false
+    timespec: '20231102_041706'
+    tmp_dir: /content/wandb/run-20231102_041706-xkeny1tk/tmp
+    username: root
+    wandb_dir: /content/wandb/
+_artifact_callback:
+  desc: null
+  value: wandb.sdk.wandb_run.Run._config_artifact_callback
