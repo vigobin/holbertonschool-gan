@@ -1,13 +1,26 @@
 # -*- coding: utf-8 -*-
-"""Baseline DCGAN model
+"""Baseline.ipynb
 """
 
 import matplotlib.pyplot as plt
 import os
-import tensorflow as tf
 import time
 
+import tensorflow as tf
 from tensorflow.keras import layers
+
+import wandb
+wandb.login()
+wandb.init(project='DCGAN', name='Baseline')
+
+config = wandb.config
+config.BUFFER_SIZE = 60000
+config.BATCH_SIZE = 256
+config.EPOCHS = 10
+config.noise_dim = 100
+config.num_to_generate = 16
+
+wandb.config.update(config)
 
 (train_images, train_labels), (_, _) = tf.keras.datasets.mnist.load_data()
 
@@ -15,11 +28,11 @@ train_images = train_images.reshape(
    train_images.shape[0], 28, 28, 1).astype('float32')
 train_images = (train_images - 127.5) / 127.5
 
-BUFFER_SIZE = 60000
-BATCH_SIZE = 256
+# BUFFER_SIZE = 60000
+# BATCH_SIZE = 256
 
 train_dataset = tf.data.Dataset.from_tensor_slices(
-   train_images).shuffle(BUFFER_SIZE).batch(BATCH_SIZE)
+   train_images).shuffle(config.BUFFER_SIZE).batch(config.BATCH_SIZE)
 
 
 def make_generator_model():
@@ -29,7 +42,7 @@ def make_generator_model():
     model.add(layers.LeakyReLU())
 
     model.add(layers.Reshape((7, 7, 256)))
-    assert model.output_shape == (None, 7, 7, 256)
+    assert model.output_shape == (None, 7, 7, 256)  # None is the batch size
 
     model.add(layers.Conv2DTranspose(
        128, (5, 5), strides=(1, 1), padding='same', use_bias=False))
@@ -43,9 +56,10 @@ def make_generator_model():
     model.add(layers.BatchNormalization())
     model.add(layers.LeakyReLU())
 
-    model.add(layers.Conv2DTranspose(1, (
-       5, 5), strides=(2, 2), padding='same', use_bias=False,
-       activation='tanh'))
+    model.add(
+       layers.Conv2DTranspose(1, (
+          5, 5), strides=(2, 2), padding='same', use_bias=False,
+          activation='tanh'))
     assert model.output_shape == (None, 28, 28, 1)
 
     return model
@@ -61,9 +75,8 @@ plt.imshow(generated_image[0, :, :, 0], cmap='gray')
 
 def make_discriminator_model():
     model = tf.keras.Sequential()
-    model.add(
-       layers.Conv2D(64, (5, 5), strides=(
-          2, 2), padding='same', input_shape=[28, 28, 1]))
+    model.add(layers.Conv2D(64, (5, 5), strides=(2, 2), padding='same',
+                            input_shape=[28, 28, 1]))
     model.add(layers.LeakyReLU())
     model.add(layers.Dropout(0.3))
 
@@ -98,16 +111,16 @@ def generator_loss(fake_output):
 generator_optimizer = tf.keras.optimizers.Adam(1e-4)
 discriminator_optimizer = tf.keras.optimizers.Adam(1e-4)
 
-EPOCHS = 20
-noise_dim = 100
-num_to_generate = 9
+# EPOCHS = 1
+# noise_dim = 100
+# num_to_generate = 16
 
-seed = tf.random.normal([num_to_generate, noise_dim])
+seed = tf.random.normal([config.num_to_generate, config.noise_dim])
 
 
 @tf.function
 def train_step(images):
-    noise = tf.random.normal([BATCH_SIZE, noise_dim])
+    noise = tf.random.normal([config.BATCH_SIZE, config.noise_dim])
 
     with tf.GradientTape() as gen_tape, tf.GradientTape() as disc_tape:
         generated_images = generator(noise, training=True)
@@ -128,13 +141,17 @@ def train_step(images):
     discriminator_optimizer.apply_gradients(
        zip(gradients_of_discriminator, discriminator.trainable_variables))
 
+    return gen_loss, disc_loss
+
 
 def train(dataset, epochs):
     for epoch in range(epochs):
         start = time.time()
 
     for image_batch in dataset:
-        train_step(image_batch)
+        gen_loss, disc_loss = train_step(image_batch)
+        wandb.log(
+            {'Discriminator Loss': disc_loss, 'Generator Loss': gen_loss})
 
     generate_and_save_images(generator,
                              epoch + 1,
@@ -155,8 +172,12 @@ def generate_and_save_images(model, epoch, test_input):
         plt.imshow(predictions[i, :, :, 0] * 127.5 + 127.5, cmap='gray')
         plt.axis('off')
 
-    plt.savefig('image_at_epoch_{:04d}.png'.format(epoch))
+    img = 'image_at_epoch_{:04d}.png'.format(epoch)
+    plt.savefig(img)
     plt.show()
 
+    wandb.log({"Images": [wandb.Image(img, caption=f'Epoch {epoch}')]})
 
-train(train_dataset, EPOCHS)
+
+train(train_dataset, config.EPOCHS)
+wandb.finish()
