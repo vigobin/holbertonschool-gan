@@ -18,6 +18,7 @@ The CelebFaces Attributes (CelebA) dataset was used on this project since it pro
 ## Weights and Biases Dashboards:
 Images and Charts on Time Taken, Discriminator, and Generator losses:
 https://api.wandb.ai/links/vgobin/r7oxll9h
+![AdGAN](https://github.com/vigobin/holbertonschool-gan/assets/111760025/a021a639-5f06-4542-b5ca-4827c09ad4bb)
 
 ## Takeaways and Observations:
 The baseline provided a human shaped face although it was pretty blurry. Time taken was respectable at around 27s per epoch.
