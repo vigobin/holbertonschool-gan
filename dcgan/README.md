@@ -17,6 +17,7 @@ The MNIST dataset was used for training since it is well established and a good 
 Images and Charts on Discriminator and Generator losses:
 https://api.wandb.ai/links/vgobin/4ht5i9bw
 
+![DCGAN](https://github.com/vigobin/holbertonschool-gan/assets/111760025/d7c8b731-6ce0-4550-b6f6-1c2d21c92cf1)
 
 ## Takeaways and Observations:
 The baseline provided some readable numbers but was still pretty blurry while training time was not bad at around 11s per epoch.
